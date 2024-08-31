@@ -10,19 +10,13 @@ import {
 import { ChangeEvent, FormEvent } from "react";
 import Alert from "@mui/material/Alert";
 import * as emailjs from "@emailjs/browser";
-
-export interface FormValues {
-  name: string;
-  company?: string;
-  email: string;
-  description: string;
-  phone?: string;
-}
-
-export interface CompanyValues {
-  company: string;
-  email: string;
-}
+import {
+  ContactFormProps,
+  FormValues,
+  TemplateParamsMapping,
+  CompanyValues,
+  CompanyParamsMapping,
+} from "@src/types";
 
 interface FormErrors {
   name?: string;
@@ -30,33 +24,6 @@ interface FormErrors {
   email?: string;
   description?: string;
   phone?: string;
-}
-
-type TemplateParamsMapping = {
-  [key: string]: keyof FormValues;
-};
-
-type CompanyParamsMapping = {
-  [key: string]: keyof CompanyValues;
-};
-
-export interface ContactFormProps {
-  emailJsPublicKey: string;
-  emailJsServiceId: string;
-  emailJsTemplateId: string;
-  formValues: FormValues;
-  companyValues: CompanyValues;
-  setFormValues: React.Dispatch<React.SetStateAction<FormValues>>;
-  templateParams: TemplateParamsMapping;
-  companyParams: CompanyParamsMapping;
-
-  buttonSx?: any;
-  containerSx?: any;
-  onSubmit?: any;
-  willSendEmailToThem?: boolean;
-  willSendEmailToMe?: boolean;
-  theirEmailJsTemplateId?: string;
-  templateParamsToThem?: TemplateParamsMapping;
 }
 
 const ContactForm = (props: ContactFormProps) => {

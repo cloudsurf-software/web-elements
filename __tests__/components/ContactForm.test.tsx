@@ -2,10 +2,9 @@ import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
-import ContactForm, {
-  FormValues,
-  CompanyValues,
-} from "../../src/components/ContactForm";
+import { FormValues, CompanyValues } from "../../src/types";
+
+import ContactForm from "../../src/components/ContactForm";
 
 const defaultProps = {
   emailJsPublicKey: "test_public_key",

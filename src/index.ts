@@ -1,5 +1,3 @@
-export {
-  default as ContactForm,
-  FormValues,
-  ContactFormProps,
-} from "./components/ContactForm";
+export { default as ContactForm } from "./components/ContactForm";
+
+export { FormValues, ContactFormProps } from "./types";
