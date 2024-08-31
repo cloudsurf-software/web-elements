@@ -1,5 +1,5 @@
 src/
-tests/
+__tests__/
 *.ts
 *.tsx
 tsconfig.json
