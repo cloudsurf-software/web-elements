@@ -1,24 +1,17 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "outDir": "./dist",
-    "module": "CommonJS",
-    "target": "ES5",
-    "lib": ["DOM", "ESNext"],
+    "target": "es6",
+    "module": "commonjs",
+    "jsx": "react",
+    "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
-    "strict": true,
-    "jsx": "react",
-    "declaration": true,
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "baseUrl": ".",
-    "paths": {
-      "@src/*": ["src/*"],
-      "@types/*": ["types/*"]
-    },
-    "typeRoots": ["./node_modules/@types", "./types"]
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist", // Output directory for .js and .d.ts files
+    "declaration": true, // Generate .d.ts files
+    "declarationDir": "./dist", // Output directory for .d.ts files
+    "rootDir": "./src" // Root directory of your source files
   },
-  "include": ["src/**/*", "types/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

@@ -16,7 +16,7 @@ import {
   TemplateParamsMapping,
   CompanyValues,
   CompanyParamsMapping,
-} from "@src/types";
+} from "../../types";
 
 interface FormErrors {
   name?: string;
