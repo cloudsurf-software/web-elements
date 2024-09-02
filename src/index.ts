@@ -1,3 +1,7 @@
-export { default as ContactForm } from "./components/ContactForm";
+// export { default as ContactForm } from "./components/ContactForm";
 
-export { FormValues, ContactFormProps } from "./types";
+// export * from "./index";
+
+// src/index.ts
+export { default as ContactForm } from "./components/ContactForm";
+export * from "./types";

@@ -1,8 +1,8 @@
 import React from "react";
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
+// import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom";
-import { FormValues, CompanyValues } from "../../src/types";
+import { FormValues, CompanyValues } from "../../index";
 
 import ContactForm from "../../src/components/ContactForm";
 

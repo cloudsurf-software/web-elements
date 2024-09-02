@@ -1,14 +1,17 @@
 {
   "name": "@cloudsurf/web",
-  "version": "0.0.8",
+  "version": "0.0.15",
   "description": "Package of components for websites",
-  "main": "dist/index.js",
+  "main": "dist/index",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "prepare": "npm run build",
     "test": "jest"
   },
+  "files": [
+    "dist/**/*"
+  ],
   "jest": {
     "preset": "ts-jest",
     "testEnvironment": "jsdom",
