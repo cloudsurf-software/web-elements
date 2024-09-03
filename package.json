@@ -1,6 +1,6 @@
 {
   "name": "@cloudsurf/web",
-  "version": "0.0.17",
+  "version": "0.0.18",
   "description": "Package of components for websites",
   "main": "dist/index",
   "types": "dist/index.d.ts",
@@ -55,7 +55,9 @@
     "typescript": "^5.5.4"
   },
   "peerDependencies": {
-    "@mui/material": "^6.0.1"
+    "@mui/material": "^6.0.1",
+    "@mui/icons-material": "^6.0.1",
+    "next": "14.2.1"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
