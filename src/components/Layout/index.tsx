@@ -42,6 +42,8 @@ export default function Layout({
   isTablet = false,
   isPhone = false,
   borderRadius = "0px",
+  primaryColor = colors.indigo[700],
+  primaryHoverColor = colors.indigo[700],
 }: LayoutProps) {
   const toggleDrawer = (open: boolean) => {
     console.log("toggleDrawer start", open, "before:", isDrawerOpen);
@@ -84,6 +86,8 @@ export default function Layout({
         isTablet={isTablet}
         isPhone={isPhone}
         navItems={navItems}
+        primaryColor={primaryColor}
+        primaryHoverColor={primaryHoverColor}
       />
       <MainContainer
         startColor={startColor ?? colors.grey[200]}

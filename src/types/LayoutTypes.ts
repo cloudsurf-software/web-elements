@@ -17,6 +17,8 @@ export interface LayoutProps {
   isTablet?: boolean;
   isPhone?: boolean;
   borderRadius?: string;
+  primaryColor?: string;
+  primaryHoverColor?: string;
 }
 
 export interface NavDrawerProps {
@@ -25,16 +27,18 @@ export interface NavDrawerProps {
   isTablet: boolean;
   isPhone: boolean;
   navItems: NavItem[];
-}
-
-export interface DrawerListProps {
-  navItems: NavItem[];
-  toggleDrawer: any;
-  isTablet: boolean;
-  isPhone: boolean;
   primaryColor?: string;
   primaryHoverColor?: string;
 }
+
+// export interface DrawerListProps {
+//   navItems: NavItem[];
+//   toggleDrawer: any;
+//   isTablet: boolean;
+//   isPhone: boolean;
+//   primaryColor?: string;
+//   primaryHoverColor?: string;
+// }
 
 export interface StyledDrawerProps {
   open: boolean;

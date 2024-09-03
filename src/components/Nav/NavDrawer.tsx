@@ -1,7 +1,17 @@
 import React from "react";
-import { Drawer } from "@mui/material";
-import DrawerList from "./DrawerList";
-import { NavDrawerProps } from "../../types";
+import {
+  Box,
+  colors,
+  Divider,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
+} from "@mui/material";
+import { NavDrawerProps, NavItem } from "../../types";
+import { useRouter } from "next/router";
 
 function NavDrawer({
   toggleDrawer,
@@ -9,7 +19,18 @@ function NavDrawer({
   isTablet,
   isPhone,
   navItems,
+  primaryColor = colors.indigo[700],
+  primaryHoverColor = colors.indigo[700],
 }: NavDrawerProps) {
+  const router = useRouter();
+
+  const onClickMenuItem = (page: NavItem) => {
+    if (isTablet) {
+      toggleDrawer(false);
+    }
+    router.push(page.route);
+  };
+
   return (
     <Drawer
       elevation={0}
@@ -24,12 +45,44 @@ function NavDrawer({
         },
       }}
     >
-      <DrawerList
-        toggleDrawer={toggleDrawer}
-        isTablet={isTablet}
-        isPhone={isPhone}
-        navItems={navItems}
-      />
+      <Box
+        sx={{
+          width: isTablet ? (isPhone ? "50vw" : "30vw") : "250px",
+
+          marginTop: isTablet ? 3 : 0,
+        }}
+        role="presentation"
+      >
+        <List>
+          {navItems?.map((page: NavItem, index) => (
+            <ListItem key={page.name} disablePadding>
+              <ListItemButton
+                sx={{
+                  borderRadius: "0px", // Rounded right side
+                  backgroundColor:
+                    router.pathname === page.route
+                      ? primaryColor
+                      : "transparent",
+                  color:
+                    router.pathname === page.route ? "primary.main" : "inherit",
+                  "&:hover": {
+                    backgroundColor:
+                      router.pathname === page.route
+                        ? primaryHoverColor
+                        : primaryHoverColor,
+                    color: "primary.main",
+                  },
+                }}
+                onClick={() => onClickMenuItem(page)}
+              >
+                <ListItemIcon>{page.icon}</ListItemIcon>
+                <ListItemText primary={page.name} />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+      </Box>
     </Drawer>
   );
 }
