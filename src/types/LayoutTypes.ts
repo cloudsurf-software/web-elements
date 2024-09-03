@@ -19,6 +19,8 @@ export interface LayoutProps {
   borderRadius?: string;
   primaryColor?: string;
   primaryHoverColor?: string;
+  companyName?: string;
+  showPoweredBy?: boolean;
 }
 
 export interface NavDrawerProps {
@@ -29,6 +31,7 @@ export interface NavDrawerProps {
   navItems: NavItem[];
   primaryColor?: string;
   primaryHoverColor?: string;
+  iconComponent?: any;
 }
 
 // export interface DrawerListProps {
@@ -59,4 +62,6 @@ export interface FooterProps {
   isTablet?: boolean;
   isPhone?: boolean;
   borderRadius?: string;
+  companyName?: string;
+  showPoweredBy?: boolean;
 }

@@ -1,6 +1,6 @@
 {
   "name": "@cloudsurf/web",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "description": "Package of components for websites",
   "main": "dist/index",
   "types": "dist/index.d.ts",

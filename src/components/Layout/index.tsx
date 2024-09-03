@@ -20,9 +20,9 @@ const MainContainer = styled.div<{
   min-height: 100vh;
   transition: margin-left 0.3s;
   margin-top: 55px;
-  margin-bottom: 100px; // distance including footer
+  margin-bottom: 210px; // distance including footer
   border-radius: ${(props) => props.borderRadius};
-  margin-left: ${(props) => (props.open && !props.isTablet ? "250px" : "0")};
+  margin-left: ${(props) => (props.open && !props.isTablet ? "240px" : "0")};
   background: linear-gradient(
     ${(props) => props.startColor},
     ${(props) => props.endColor}
@@ -44,6 +44,8 @@ export default function Layout({
   borderRadius = "0px",
   primaryColor = colors.indigo[700],
   primaryHoverColor = colors.indigo[700],
+  companyName = "CloudSurf Software",
+  showPoweredBy = true,
 }: LayoutProps) {
   const toggleDrawer = (open: boolean) => {
     console.log("toggleDrawer start", open, "before:", isDrawerOpen);
@@ -88,6 +90,7 @@ export default function Layout({
         navItems={navItems}
         primaryColor={primaryColor}
         primaryHoverColor={primaryHoverColor}
+        iconComponent={logoImg}
       />
       <MainContainer
         startColor={startColor ?? colors.grey[200]}
@@ -106,6 +109,8 @@ export default function Layout({
         isPhone={isPhone}
         isTablet={isTablet}
         borderRadius={borderRadius}
+        companyName={companyName}
+        showPoweredBy={showPoweredBy}
       />
     </main>
   );

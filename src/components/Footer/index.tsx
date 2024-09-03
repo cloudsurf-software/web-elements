@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { Box, colors, Typography } from "@mui/material";
+import { Box, colors, Link, Typography } from "@mui/material";
 // import moment from "moment";
 // import { useSelector } from "react-redux";
 // import { selectColorsByTheme, selectNavOpen } from "@/redux/settingsSlice";
@@ -16,6 +16,7 @@ const FooterContainer = styled.footer<{
 }>`
   position: absolute; // Changed from fixed to absolute
   bottom: 0;
+  height: 200px;
   background-color: ${(props) => props.backgroundColor};
   z-index: 1000;
   transition: margin-left 0.3s;
@@ -37,6 +38,8 @@ export default function Footer({
   isTablet = false,
   isPhone = false,
   borderRadius = "0px",
+  companyName = "CloudSurf Software",
+  showPoweredBy = true,
 }: FooterProps) {
   return (
     <FooterContainer
@@ -57,15 +60,28 @@ export default function Footer({
       >
         {logoImg && logoImg}
 
-        {/* <Logo logoImg={logoImg} /> */}
         <Typography
           variant={"subtitle2"}
           sx={{ textAlign: "center", color: textColor }}
           color={textColor}
           mt={3}
         >
-          &copy; {new Date().getFullYear()} CloudSurf Software
+          &copy; {new Date().getFullYear()} {companyName}
         </Typography>
+        {showPoweredBy && (
+          <Link
+            href="https://cloudsurfsoftware.com"
+            target="_blank"
+            sx={{
+              color: colors.blue[700],
+              ":hover": {
+                color: colors.blue[500],
+              },
+            }}
+          >
+            Powered by CloudSurf
+          </Link>
+        )}
       </Box>
     </FooterContainer>
   );

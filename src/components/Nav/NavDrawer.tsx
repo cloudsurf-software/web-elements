@@ -21,6 +21,7 @@ function NavDrawer({
   navItems,
   primaryColor = colors.indigo[700],
   primaryHoverColor = colors.indigo[700],
+  iconComponent = <></>,
 }: NavDrawerProps) {
   const router = useRouter();
 
@@ -49,10 +50,13 @@ function NavDrawer({
         sx={{
           width: isTablet ? (isPhone ? "50vw" : "30vw") : "250px",
 
-          marginTop: isTablet ? 3 : 0,
+          marginTop: isTablet ? 1 : 0,
         }}
         role="presentation"
       >
+        {isTablet && (
+          <Box sx={{ marginLeft: 1, marginBottom: 1 }}>{iconComponent}</Box>
+        )}
         <List>
           {navItems?.map((page: NavItem, index) => (
             <ListItem key={page.name} disablePadding>
