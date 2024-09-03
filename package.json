@@ -1,6 +1,6 @@
 {
   "name": "@cloudsurf/web",
-  "version": "0.0.15",
+  "version": "0.0.17",
   "description": "Package of components for websites",
   "main": "dist/index",
   "types": "dist/index.d.ts",
@@ -54,10 +54,12 @@
     "ts-jest": "^29.2.5",
     "typescript": "^5.5.4"
   },
+  "peerDependencies": {
+    "@mui/material": "^6.0.1"
+  },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",
     "@emotion/react": "^11.13.3",
-    "@emotion/styled": "^11.13.0",
-    "@mui/material": "^6.0.1"
+    "@emotion/styled": "^11.13.0"
   }
 }
