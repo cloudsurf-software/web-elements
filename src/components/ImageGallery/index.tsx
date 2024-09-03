@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { Close as CloseIcon } from "@mui/icons-material";
 import Image from "next/image";
-import { ImageGalleryProps } from "../../types/ImageGalleryTypes";
+import { ImageGalleryProps } from "../../types/ImageGallery.types";
 
 const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
   const [open, setOpen] = useState(false);

@@ -1,3 +1,4 @@
-export * from "./ContactFormTypes";
-export * from "./LayoutTypes";
-export * from "./ImageGalleryTypes";
+export * from "./ContactForm.types";
+export * from "./Layout.types";
+export * from "./ImageGallery.types";
+export * from "./ImageHeader.types";
