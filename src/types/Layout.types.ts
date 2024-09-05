@@ -5,14 +5,24 @@ export interface NavItem {
 }
 
 export interface LayoutProps {
-  startColor?: string;
-  endColor?: string;
+  bgColorLevel1: string;
+  bgColorLevel2: string;
+  bgColorNav: string;
+  textColor: string;
+  secondaryTextColor: string;
+  // startColor?: string;
+  // endColor?: string;
   backgroundColor?: string;
+  textColorOnPrimary?: string;
+  navBackgroundColor?: string;
+  navTextColor?: string;
+  navIconColor?: string;
   children: React.ReactNode;
   isScrollable: boolean;
   isDrawerOpen: boolean;
   handleToggleDrawer: any;
   navItems: NavItem[];
+  extraNavItems?: JSX.Element[];
   logoImg: JSX.Element;
   isTablet?: boolean;
   isPhone?: boolean;
@@ -29,9 +39,14 @@ export interface NavDrawerProps {
   isTablet: boolean;
   isPhone: boolean;
   navItems: NavItem[];
+  extraNavItems?: JSX.Element[];
   primaryColor?: string;
   primaryHoverColor?: string;
   iconComponent?: any;
+  backgroundColor?: string;
+  iconColor?: string;
+  textColor?: string;
+  selectedTextColor?: string;
 }
 
 // export interface DrawerListProps {
@@ -52,6 +67,7 @@ export interface TopBarProps {
   drawerOpen: boolean;
   logoImg: JSX.Element;
   isTablet?: boolean;
+  backgroundColor?: string;
 }
 
 export interface FooterProps {
