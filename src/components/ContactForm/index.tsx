@@ -40,6 +40,9 @@ const ContactForm = (props: ContactFormProps) => {
     willSendEmailToMe = true,
     theirEmailJsTemplateId,
     emailJsPublicKey,
+    buttonColor = "#30a3e7",
+    buttonHoverColor = "#0a7dc1",
+    buttonTextColor = "#fafafa",
   } = props;
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -287,9 +290,9 @@ const ContactForm = (props: ContactFormProps) => {
           sx={{
             mt: 3,
             mb: 2,
-            backgroundColor: "#30a3e7",
+            backgroundColor: buttonColor,
             color: "#fafafa",
-            "&:hover": { backgroundColor: "#0a7dc1" },
+            "&:hover": { backgroundColor: buttonHoverColor },
           }}
         >
           {isLoading ? (

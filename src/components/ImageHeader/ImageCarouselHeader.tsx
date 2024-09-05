@@ -42,9 +42,9 @@ function ImageCarouselHeader({
         justifyContent: "center",
         height: "65vh",
         overflow: "hidden",
-        marginLeft: "-26px",
-        marginRight: "-26px",
-        marginTop: "-22px",
+        marginLeft: "-16px",
+        marginRight: "-16px",
+        marginTop: "-20px",
       }}
     >
       {/* Overlay Logo, Title, and Subtitle */}

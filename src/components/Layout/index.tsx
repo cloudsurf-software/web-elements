@@ -7,8 +7,7 @@ import NavDrawer from "../Nav/NavDrawer";
 import { LayoutProps, NavItem } from "../../types";
 
 const MainContainer = styled.div<{
-  startColor?: string;
-  endColor?: string;
+  backgroundColor: string;
   isScrollable?: boolean;
   open?: boolean;
   isTablet?: boolean;
@@ -22,28 +21,29 @@ const MainContainer = styled.div<{
   margin-top: 55px;
   margin-bottom: 210px; // distance including footer
   border-radius: ${(props) => props.borderRadius};
-  margin-left: ${(props) => (props.open && !props.isTablet ? "240px" : "0")};
-  background: linear-gradient(
-    ${(props) => props.startColor},
-    ${(props) => props.endColor}
-  );
+  margin-left: ${(props) => (props.open && !props.isTablet ? "250px" : "0")};
+  background-color: ${(props) => props.backgroundColor};
 `;
 
 export default function Layout({
-  startColor,
-  endColor,
-  backgroundColor = colors.grey[300],
+  bgColorLevel1,
+  bgColorLevel2,
+  bgColorNav,
+  textColor,
+  secondaryTextColor,
+  primaryColor = colors.indigo[700],
+  primaryHoverColor = colors.indigo[700],
+  textColorOnPrimary = colors.grey[100],
+  logoImg,
   children,
   isScrollable,
   isDrawerOpen,
   handleToggleDrawer,
   navItems,
-  logoImg,
+  extraNavItems = [],
   isTablet = false,
   isPhone = false,
   borderRadius = "0px",
-  primaryColor = colors.indigo[700],
-  primaryHoverColor = colors.indigo[700],
   companyName = "CloudSurf Software",
   showPoweredBy = true,
 }: LayoutProps) {
@@ -60,7 +60,7 @@ export default function Layout({
               minHeight: "100vh",
               display: "flex",
               flexDirection: "column",
-              backgroundColor: backgroundColor,
+              backgroundColor: bgColorLevel1,
               padding: 10,
               position: "relative", // Needed for absolute positioning of the footer
               width: "100%",
@@ -68,7 +68,7 @@ export default function Layout({
           : {
               height: "100vh",
               overflow: "hidden",
-              backgroundColor: backgroundColor,
+              backgroundColor: bgColorLevel1,
               padding: 10,
               position: "relative", // Needed for absolute positioning of the footer
               width: "100%",
@@ -80,6 +80,7 @@ export default function Layout({
         drawerOpen={isDrawerOpen}
         logoImg={logoImg}
         isTablet={isTablet}
+        backgroundColor={bgColorNav}
       />
 
       <NavDrawer
@@ -91,10 +92,14 @@ export default function Layout({
         primaryColor={primaryColor}
         primaryHoverColor={primaryHoverColor}
         iconComponent={logoImg}
+        extraNavItems={extraNavItems}
+        backgroundColor={bgColorNav}
+        textColor={textColor}
+        selectedTextColor={textColorOnPrimary}
+        iconColor={secondaryTextColor}
       />
       <MainContainer
-        startColor={startColor ?? colors.grey[200]}
-        endColor={endColor ?? colors.grey[200]}
+        backgroundColor={bgColorLevel2}
         open={isDrawerOpen}
         isScrollable={isScrollable}
         isTablet={isTablet}
@@ -111,6 +116,8 @@ export default function Layout({
         borderRadius={borderRadius}
         companyName={companyName}
         showPoweredBy={showPoweredBy}
+        backgroundColor={bgColorLevel2}
+        textColor={textColor}
       />
     </main>
   );

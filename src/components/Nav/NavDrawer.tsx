@@ -19,9 +19,14 @@ function NavDrawer({
   isTablet,
   isPhone,
   navItems,
+  extraNavItems = [],
   primaryColor = colors.indigo[700],
   primaryHoverColor = colors.indigo[700],
   iconComponent = <></>,
+  backgroundColor = colors.grey[300],
+  textColor = colors.grey[900],
+  selectedTextColor = colors.grey[900],
+  iconColor = colors.grey[800],
 }: NavDrawerProps) {
   const router = useRouter();
 
@@ -43,6 +48,7 @@ function NavDrawer({
           borderRight: "none !important",
           marginTop: isTablet ? "0px" : "55px",
           width: isTablet ? (isPhone ? "50vw" : "30vw") : "250px",
+          backgroundColor: backgroundColor,
         },
       }}
     >
@@ -68,13 +74,17 @@ function NavDrawer({
                       ? primaryColor
                       : "transparent",
                   color:
-                    router.pathname === page.route ? "primary.main" : "inherit",
+                    router.pathname === page.route
+                      ? selectedTextColor
+                      : textColor,
+
+                  // router.pathname === page.route ? "primary.main" : "inherit",
                   "&:hover": {
                     backgroundColor:
                       router.pathname === page.route
                         ? primaryHoverColor
                         : primaryHoverColor,
-                    color: "primary.main",
+                    color: selectedTextColor,
                   },
                 }}
                 onClick={() => onClickMenuItem(page)}
@@ -84,8 +94,13 @@ function NavDrawer({
               </ListItemButton>
             </ListItem>
           ))}
+          <Divider />
+          {extraNavItems?.map((item, index) => (
+            <ListItem key={index} disablePadding>
+              {item}
+            </ListItem>
+          ))}
         </List>
-        <Divider />
       </Box>
     </Drawer>
   );

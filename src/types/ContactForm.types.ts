@@ -35,4 +35,7 @@ export interface ContactFormProps {
   willSendEmailToMe?: boolean;
   theirEmailJsTemplateId?: string;
   templateParamsToThem?: TemplateParamsMapping;
+  buttonColor?: string;
+  buttonHoverColor?: string;
+  buttonTextColor?: string;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import { useRouter } from "next/router";
-import { AppBar, Box, Toolbar, IconButton } from "@mui/material";
+import { AppBar, Box, Toolbar, IconButton, colors } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 
 // import Logo from "../Logo";
@@ -11,6 +11,7 @@ function TopBar({
   drawerOpen,
   logoImg,
   isTablet = false,
+  backgroundColor = colors.grey[300],
 }: TopBarProps) {
   const router = useRouter();
 
@@ -50,7 +51,11 @@ function TopBar({
   };
 
   return (
-    <AppBar position="fixed" elevation={0} sx={{ height: "55px" }}>
+    <AppBar
+      position="fixed"
+      elevation={0}
+      sx={{ height: "55px", backgroundColor: backgroundColor }}
+    >
       <Toolbar
         disableGutters
         sx={{
