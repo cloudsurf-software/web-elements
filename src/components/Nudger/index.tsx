@@ -173,6 +173,8 @@ const Nudger = ({
               primaryColor={primaryColor}
               buttonIconColor={buttonIconColor}
               fontFamily={fontFamily}
+              isTablet={isTablet}
+              isPhone={isPhone}
             />
           ) : (
             <></>
