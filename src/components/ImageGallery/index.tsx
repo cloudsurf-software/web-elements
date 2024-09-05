@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { Close as CloseIcon } from "@mui/icons-material";
 import Image from "next/image";
-import { ImageGalleryProps } from "../../types/ImageGallery.types";
+import { ImageGalleryProps } from "../../types";
 
 const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
   const [open, setOpen] = useState(false);
@@ -40,7 +40,7 @@ const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
         sx={{ display: "flex", justifyContent: "center" }}
       >
         {images.map((image, index) => (
-          <Grid2>
+          <Grid2 size={{ xs: 12, sm: 6, md: 3 }} key={index}>
             <Box
               sx={{
                 cursor: "pointer",
@@ -51,6 +51,10 @@ const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
                 "&:hover": {
                   transform: "scale(1.02)",
                 },
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                height: 300,
               }}
               onClick={() => handleClickOpen(image)}
             >
@@ -61,6 +65,7 @@ const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
                 height={image.height}
                 layout="responsive"
                 objectFit="cover"
+                objectPosition="center center"
               />
             </Box>
             {showTitle && (
