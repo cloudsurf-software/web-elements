@@ -158,10 +158,10 @@ const Nudger = ({
           alignItems: "flex-start",
         }}
       >
-        {items?.map((item, index) =>
+        {items?.map((item) =>
           router.pathname !== item.route ? (
             <NudgerBox
-              key={index}
+              key={item.route}
               title={item.title}
               description={item.description}
               img={item.imgComponent}

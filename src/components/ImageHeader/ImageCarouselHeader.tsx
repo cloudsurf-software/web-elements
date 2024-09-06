@@ -118,9 +118,11 @@ function ImageCarouselHeader({
               <Image
                 src={imgUrls[currentPage]}
                 alt="Displayed Image"
-                layout="fill"
-                objectFit="cover"
-                style={{ filter: "brightness(35%)" }}
+                fill
+                style={{ objectFit: "cover", filter: "brightness(35%)" }}
+                // layout="fill"
+                // objectFit="cover"
+                // style={{ filter: "brightness(35%)" }}
               />
             </Card>
           </Box>
@@ -144,9 +146,11 @@ function ImageCarouselHeader({
               <Image
                 src={imgUrls[nextPage]}
                 alt="Next Image"
-                layout="fill"
-                objectFit="cover"
-                style={{ filter: "brightness(35%)" }}
+                fill
+                style={{ objectFit: "cover", filter: "brightness(35%)" }}
+                // layout="fill"
+                // objectFit="cover"
+                // style={{ filter: "brightness(35%)" }}
               />
             </Card>
           </Box>

@@ -63,9 +63,20 @@ const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
                 alt={image.title}
                 width={image.width}
                 height={image.height}
-                layout="responsive"
-                objectFit="cover"
-                objectPosition="center center"
+                sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 25vw"
+                // fill
+                // style={{ objectFit: "cover", objectPosition: "center center" }}
+                priority={index < 8}
+                loading={index >= 8 ? "lazy" : undefined}
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center center",
+                  width: "100%", // Full width
+                  height: "auto", // Automatically adjust height to maintain aspect ratio
+                }}
+                // layout="responsive"
+                // objectFit="cover"
+                // objectPosition="center center"
               />
             </Box>
             {showTitle && (
@@ -108,8 +119,10 @@ const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
               <Image
                 src={selectedImage.imageUrl}
                 alt={selectedImage.title}
-                layout="fill"
-                objectFit="contain"
+                fill
+                style={{ objectFit: "contain" }}
+                // layout="fill"
+                // objectFit="contain"
               />
             </Box>
             {selectedImage.description && (
