@@ -7,4 +7,6 @@ export interface ImageGalleryProps {
     height: number;
   }[];
   showTitle?: boolean;
+  fullSizeViewerByDefault?: boolean;
+  showFullSizeButton?: boolean;
 }

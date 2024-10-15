@@ -1,3 +1,5 @@
+// src/components/ImageGallery/index.tsx
+
 import React, { useState } from "react";
 import {
   Box,
@@ -6,14 +8,36 @@ import {
   DialogTitle,
   Typography,
   IconButton,
+  Button,
   Grid2,
 } from "@mui/material";
 import { Close as CloseIcon } from "@mui/icons-material";
 import Image from "next/image";
 import { ImageGalleryProps } from "../../types";
+import ImageViewer from "../ImageViewer";
+// import ImageViewer from "../ImageViewer";
+// import Grid2 from '@mui/material/Unstable_Grid2'; // Using Grid2 as you did
 
-const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
-  const [open, setOpen] = useState(false);
+// export interface ImageGalleryProps {
+//   images: {
+//     imageUrl: string;
+//     title: string;
+//     description?: string;
+//     width: number;
+//     height: number;
+//   }[];
+//   showTitle?: boolean;
+//   fullSizeViewerByDefault?: boolean;
+//   showFullSizeButton?: boolean;
+// }
+
+const ImageGallery: React.FC<ImageGalleryProps> = ({
+  images,
+  showTitle = true,
+  fullSizeViewerByDefault = false,
+  showFullSizeButton = true,
+}) => {
+  const [open, setOpen] = useState(false); // Small modal visibility
   const [selectedImage, setSelectedImage] = useState<{
     imageUrl: string;
     title: string;
@@ -21,15 +45,32 @@ const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
     width: number;
     height: number;
   } | null>(null);
+  const [isFullSize, setIsFullSize] = useState(false); // ImageViewer visibility
 
   const handleClickOpen = (image: typeof selectedImage) => {
     setSelectedImage(image);
-    setOpen(true);
+    if (fullSizeViewerByDefault) {
+      setIsFullSize(true);
+    } else {
+      setOpen(true);
+    }
   };
 
   const handleClose = () => {
     setOpen(false);
     setSelectedImage(null);
+  };
+
+  const handleViewFullSizeImage = () => {
+    setOpen(false);
+    setIsFullSize(true);
+  };
+
+  const handleCloseImageViewer = (visible: boolean) => {
+    setIsFullSize(visible);
+    if (!visible) {
+      setSelectedImage(null);
+    }
   };
 
   return (
@@ -64,19 +105,14 @@ const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
                 width={image.width}
                 height={image.height}
                 sizes="(max-width: 600px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                // fill
-                // style={{ objectFit: "cover", objectPosition: "center center" }}
                 priority={index < 8}
                 loading={index >= 8 ? "lazy" : undefined}
                 style={{
                   objectFit: "cover",
                   objectPosition: "center center",
-                  width: "100%", // Full width
-                  height: "auto", // Automatically adjust height to maintain aspect ratio
+                  width: "100%",
+                  height: "auto",
                 }}
-                // layout="responsive"
-                // objectFit="cover"
-                // objectPosition="center center"
               />
             </Box>
             {showTitle && (
@@ -88,7 +124,8 @@ const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
         ))}
       </Grid2>
 
-      {selectedImage && (
+      {/* Small Modal Dialog */}
+      {selectedImage && open && (
         <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth>
           <DialogTitle>
             {selectedImage.title}
@@ -121,8 +158,6 @@ const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
                 alt={selectedImage.title}
                 fill
                 style={{ objectFit: "contain" }}
-                // layout="fill"
-                // objectFit="contain"
               />
             </Box>
             {selectedImage.description && (
@@ -130,8 +165,30 @@ const ImageGallery = ({ images, showTitle = true }: ImageGalleryProps) => {
                 {selectedImage.description}
               </Typography>
             )}
+            {showFullSizeButton && (
+              <Button
+                variant="contained"
+                color="primary"
+                sx={{ mt: 2, float: "right" }}
+                onClick={handleViewFullSizeImage}
+              >
+                View Full Size
+              </Button>
+            )}
           </DialogContent>
         </Dialog>
+      )}
+
+      {/* Full-Size ImageViewer */}
+      {selectedImage && isFullSize && (
+        <ImageViewer
+          isVisible={isFullSize}
+          setIsVisible={handleCloseImageViewer}
+          photoUrl={selectedImage.imageUrl}
+          altText={selectedImage.title}
+          title={selectedImage.title}
+          description={selectedImage.description}
+        />
       )}
     </Box>
   );

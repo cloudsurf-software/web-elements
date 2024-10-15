@@ -85,6 +85,7 @@ const StaticImageHeader = ({
               alt="Displayed Image"
               fill
               style={{ objectFit: "cover", filter: "brightness(35%)" }}
+              priority
               // layout="fill"
               // objectFit="cover"
               // style={{ filter: "brightness(35%)" }}
